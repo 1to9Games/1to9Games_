@@ -1,0 +1,6 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Material Tailwind */
+@import "@material-tailwind/react/tailwind.css";
