@@ -1,5 +1,6 @@
 import { Button, Card, CardHeader, Input, Typography   } from '@material-tailwind/react';
 import React, { useState, useEffect, useRef } from 'react';
+import toast from 'react-hot-toast';
 
 
 function Dashboard() {
@@ -144,29 +145,29 @@ useEffect(() => {
 
   const handlePlaceBet = (slotIndex) => {
     if (!isSlotActive[slotIndex]) {
-      alert('This slot is no longer active');
+      toast.error('This slot is no longer active');
       return;
     }
 
     if (!selectedNumbers[slotIndex]) {
-      alert('Please select a number first');
+      toast.error('Please select a number first');
       return;
     }
 
     const betAmount = Number(betAmounts[slotIndex]);
     if (!betAmount || betAmount < 20 || betAmount > 100000) {
-      alert('Please enter a valid bet amount between ₹20 and ₹100,000');
+      toast.error('Please enter a valid bet amount between ₹20 and ₹100,000');
       return;
     }
 
     if (betAmount > balance) {
-      alert('Insufficient balance');
+      toast.error('Insufficient balance');
       return;
     }
 
     setBalance(prevBalance => prevBalance - betAmount);
     addToTransactionHistory(`Placed bet of ₹${betAmount} on Slot ${slotIndex + 1}`);
-    alert(`Bet placed for Slot ${slotIndex + 1}: Number ${selectedNumbers[slotIndex]} with amount ₹${betAmount}`);
+    toast.success(`Bet placed for Slot ${slotIndex + 1}: Number ${selectedNumbers[slotIndex]} with amount ₹${betAmount}`);
   };
 
   const formatTime = (milliseconds) => {
