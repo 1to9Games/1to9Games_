@@ -1,8 +1,7 @@
 import React from 'react'
-import WithdrawalReq from '../Components/WithdrawalReq'
-import GameControls from '../Components/GameControls'
 import Scoreboard from '../Components/ScoreBoard'
-import { Button } from "@material-tailwind/react";
+import { AdminNavbar } from '../Components/Navbar';
+import GameControls from '../Components/GameControls';
 
 
 
@@ -25,13 +24,11 @@ const Admin = () => {
 
       ];
   return (
-   <div className="">
-    <div className="">
-        <WithdrawalReq/>
-        <Button >click me</Button>
-        
+   <div className="relative ">
+    <div className="w-full z-10 absolute pt-4">
+        <AdminNavbar/>
     </div>
-    <div className="">
+    <div className=" pt-[100px]">
         <GameControls/>
     </div>
     <div className="">
